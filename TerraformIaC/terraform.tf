@@ -1,5 +1,12 @@
 terraform {
-  required_version = ">= 1.3.0"
+  required_version = "~> 1.11.0"
+  
+  cloud {
+    organization = "sriniachanta"
+    workspaces {
+      name = "azdevcont"
+    }
+  }
 
   required_providers {
     azurerm = {
