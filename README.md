@@ -12,14 +12,14 @@ Often times the deployment process for many repos uses a concept of *Developing 
 [![Open in VS Code Dev Containers](https://img.shields.io/static/v1?style=for-the-badge&label=VSCode%20-%20DevContainer&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/oliverlabs/azdevcont)
 [![Open in VS Code - Insiders Dev Containers](https://img.shields.io/static/v1?style=for-the-badge&label=VSCode-Insiders%20-%20Devcontainer&message=Open&color=blue&logo=visualstudiocode)](https://insiders.vscode.dev/redirect?url=vscode-insiders://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/oliverlabs/azdevcont)
 
-> **Note**
+> [!NOTE]  
 > More information can be found at [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers).
 
 ## What's Available?
 
 Here is a list of tools that are available out-the-box with this Codespaces container:
 
-- Linux Ubuntu Jammy (LTS-22.04) used as a base image
+- Linux Ubuntu Noble Numbat (LTS-24.04) used as a base image
 - zsh Linux shell as default (bash is available)
 - oh-my-zsh extension for zsh with the legendary STARSHIP theme
 - Azure CLI
@@ -35,6 +35,7 @@ Here is a list of tools that are available out-the-box with this Codespaces cont
 - Helm
 - Minikube
 - Kubectl
+- sshd
 
 Please note that, if available, the *latest* version of the package is used.
 
@@ -50,3 +51,14 @@ Please note that, if available, the *latest* version of the package is used.
 - draw.io integration
 - scroll-back history for terminal: 1,000,000 lines
 - UK Keyboard layout for browser based GitHub Codespaces as default
+
+## Remoting Into Codespaces
+You can remote into the created Codespaces from your local machine using ssh. Refer to the commands [here](https://docs.github.com/en/codespaces/developing-in-a-codespace/using-github-codespaces-with-github-cli).
+
+Example:
+```bash
+gh cs ssh -c [CODESPACENAME]
+```
+Once connected, you can type `zsh` to use the zsh shell.
+
+Happy coding!
