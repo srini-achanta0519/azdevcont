@@ -44,8 +44,11 @@
 				// "terminal.integrated.shell.linux": "/bin/zsh"
 				"terminal.integrated.defaultProfile.linux": "zsh",
 				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "/bin/bash"
+					},
 					"zsh": {
-						"path": "/bin/zsh"
+						"path": "/usr/bin/zsh"
 					}
 				},
 				"terminal.integrated.scrollback": 100000000,
@@ -66,7 +69,7 @@
 		"TF_TOKEN_app_terraform_io": "${localEnv:TF_TOKEN_APP_TERRAFORM_IO}",
 		"CONTEXT7_API_KEY": "${localEnv:CONTEXT7_API_KEY}"
 	},
-	"postCreateCommand": "bash -c 'if [ ! -z \"$TF_TOKEN_app_terraform_io\" ]; then mkdir -p ~/.terraform.d && cat > ~/.terraform.d/credentials.tfrc.json <<EOF\n{\n  \"credentials\": {\n    \"app.terraform.io\": {\n      \"token\": \"$TF_TOKEN_app_terraform_io\"\n    }\n  }\n}\nEOF\nchmod 600 ~/.terraform.d/credentials.tfrc.json && echo \"Terraform Cloud credentials configured successfully!\"; else echo \"Warning: TF_TOKEN_APP_TERRAFORM_IO not found. Skipping Terraform Cloud configuration.\"; fi'",
+	"postCreateCommand": "bash -c 'echo \"Installing zsh if not present...\"; if ! command -v zsh >/dev/null 2>&1; then if command -v apk >/dev/null 2>&1; then sudo apk add --no-cache zsh; elif command -v apt-get >/dev/null 2>&1; then sudo apt-get update && sudo apt-get install -y zsh; fi; fi; if [ ! -z \"$TF_TOKEN_app_terraform_io\" ]; then mkdir -p ~/.terraform.d && cat > ~/.terraform.d/credentials.tfrc.json <<EOF\n{\n  \"credentials\": {\n    \"app.terraform.io\": {\n      \"token\": \"$TF_TOKEN_app_terraform_io\"\n    }\n  }\n}\nEOF\nchmod 600 ~/.terraform.d/credentials.tfrc.json && echo \"Terraform Cloud credentials configured successfully!\"; else echo \"Warning: TF_TOKEN_APP_TERRAFORM_IO not found. Skipping Terraform Cloud configuration.\"; fi'",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/azure/azure-dev/azd:latest": {},
