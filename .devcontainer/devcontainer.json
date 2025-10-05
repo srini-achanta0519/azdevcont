@@ -62,6 +62,10 @@
 	"remoteEnv": {
 		"SHELL": "/usr/bin/zsh"
 	},
+	"containerEnv": {
+		"TF_TOKEN_app_terraform_io": "${localEnv:TF_TOKEN_APP_TERRAFORM_IO}"
+	},
+	"postCreateCommand": "bash -c 'if [ ! -z \"$TF_TOKEN_app_terraform_io\" ]; then mkdir -p ~/.terraform.d && cat > ~/.terraform.d/credentials.tfrc.json <<EOF\n{\n  \"credentials\": {\n    \"app.terraform.io\": {\n      \"token\": \"$TF_TOKEN_app_terraform_io\"\n    }\n  }\n}\nEOF\nchmod 600 ~/.terraform.d/credentials.tfrc.json && echo \"Terraform Cloud credentials configured successfully!\"; else echo \"Warning: TF_TOKEN_APP_TERRAFORM_IO not found. Skipping Terraform Cloud configuration.\"; fi'",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/azure/azure-dev/azd:latest": {},
