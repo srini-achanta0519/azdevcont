@@ -91,7 +91,8 @@
 		"ghcr.io/devcontainers/features/git:latest": {},
 		"ghcr.io/devcontainers/features/github-cli:latest": {},
 		"ghcr.io/devcontainers/features/terraform:latest": {
-			"tflint": true
+			"tflint": true,
+			"tflintversion": "latest"
 		},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:latest": {},
 		"ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
