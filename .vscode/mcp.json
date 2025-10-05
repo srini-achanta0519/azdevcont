@@ -1,0 +1,11 @@
+{
+	"servers": {
+		"terraform": {
+			"command": "sh",
+			"args": [
+				"-c",
+				"docker run -i --rm -e TFE_TOKEN=\"$TF_TOKEN_app_terraform_io\" -e TFE_HOSTNAME=app.terraform.io hashicorp/terraform-mcp-server:0.3.0"
+			]
+		}
+	}
+}
