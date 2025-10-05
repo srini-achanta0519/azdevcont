@@ -25,5 +25,10 @@
   "terminal.integrated.fontSize": 14,
   "keyboard.layout": "00000809",
   "workbench.iconTheme": "material-icon-theme",
-  "editor.guides.bracketPairs": true
+  "editor.guides.bracketPairs": true,
+  "chat.mcp.serverSampling": {
+    "azdevcont/.vscode/mcp.json: azure": {
+      "allowedDuringChat": true
+    }
+  }
 }
